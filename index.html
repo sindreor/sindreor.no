@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Kontaktside for Sindre O. Rasmussen</title>
+        <link id="style" rel="stylesheet" href="screen.css" type="text/css">
+        <script type="text/javascript" src="effects.js">
+        </script>
+        
+        <!--<link rel="stylesheet" href="screen.css" type="text/css">-->
+        <!--<link rel="stylesheet" href="phone.css" type="text/css">-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> 
+        <!--<script src="effectsPhone.js"></script>-->       
+        <meta name="description" content="Mitt navn er Sindre O. Rasmussen. Denne siden er ment som en kontaktside hvor potensielle arbeidsgivere eller andre interesserte kan finne informasjon om meg." />
+    
+    </head>
+
+    <body onresize="screenFit()" onload="screenFit()">
+        <img src="resources/b1.jpg" alt="mangler" class="bg" />
+        <header>
+        <img alt="missing_picture" onclick="reset()" class="logo" src="resources/sindreor.png"/>
+        <img alt="missing_picture" onclick="changeNorwegian()" class="language" src="resources/norwegian.png"/>
+        <img alt="missing_picture" onclick="changeEnglish()" class="language" src="resources/english.png"/>
+        </header>
+
+        <nav>
+            <div class="menuObject" id="CV" onmouseover="hover('CV')" onmouseout="hoverleave('CV')" onclick="openCV()">
+                <p>CV</p>
+            </div>
+            <div class="menuObject" id="prosjekt" onmouseover="hover('prosjekt')" onmouseout="hoverleave('prosjekt')" onclick="openProjects()">
+                <p>
+                    <span class="norwegian">
+                        Prosjekter
+                    </span>
+                    <span class="english">
+                        Projects
+                    </span>
+                </p>
+            </div>
+        </nav>
+        <div id="front">
+            <div class="blackLargeL">
+                    <h1>
+                        <span class="norwegian">
+                            Velkommen
+                        </span>
+                        <span class="english">
+                            Welcome
+                        </span>
+                    </h1>
+                    <p>
+                        <span class="norwegian">
+                        Mitt navn er Sindre O. Rasmussen. Denne siden er ment som en kontaktside hvor potensielle 
+                        arbeidsgivere eller andre interesserte kan finne informasjon om meg. Siden ble laget som 
+                        et prosjekt for å utforske hva jeg kan få til med HTML, CSS og Javascript. Du finner meg på følgende kanaler:
+                        </span>
+                        <span class="english">
+                        My name is Sindre O. Rasmussen. This site is intended as a contact page where potential
+                        employers or other interested parties can find information about me. This page were made as
+                        a project to explore what I can do with HTML, CSS and JavaScript. You can find me on the following channels:
+
+                        </span>
+                    </p>
+                    <!--<img src="resources/drage.png" id="drage" alt="logo" width="30%" height="40%"/>-->
+                <div id="contactbox">
+                    <a href="mailto:sindre@sindreor.no">
+                    <div class="contactMail">
+                    </div>
+                    </a>
+                    <a href="http://facebook.com/erdsin">
+                    <div class="contactFacebook">
+                    </div>
+                    </a>
+                    <a href="https://github.com/sindreor">
+                    <div class="contactGithub">
+                    </div>
+                    </a>
+                    <div class="contactLinkedIn">
+                    </div>
+                </div>
+                </div>
+                <div class="blackMediumR">
+                    <img src="resources/fjes.png" alt="Picture of me" id="fjes"/>
+                </div>
+                
+            </div>
+        
+        </div>
+        </div>
+        <section id="CVContent">
+            <div class="scrollLeft" onclick="leftRightScroll(true)"></div>
+            <div class="scrollRight" onclick="leftRightScroll(false)"></div>
+            <div class="message">
+                <span class="norwegian">
+                    Beveg musepekeren over/berør punktene i CVen for mer info:
+                </span>
+                <span class="english">
+                    Hover over / touch the points in the resume for more info:
+                </span>
+                </div>
+            <div class="scrollbox" onscroll="updateScroll()">
+                <div class="eternalBox">
+                    <article class="contentBox">
+                        <h1>
+                            <span class="norwegian">
+                                Personalia
+                            </span>
+                            <span class="english">
+                                Personals
+                            </span>
+                        </h1>
+                        <p class="CVText">
+                            <span class="norwegian">
+                                Navn: Sindre O. Rasmussen
+                                <br>Kjønn: Mann
+                                <br>Yrkesstatus: Student
+                                <br>Språk: Norsk(morsmål), engelsk
+                                <br>Bosted: Trondheim, Sør-Trøndelag
+                                <br>Hjemsted: Sandnes, Rogaland
+                            </span>
+                            <span class="english">
+                                Name: Sindre O. Rasmussen
+                                <br>Gender: Man
+                                <br>Occupation: Student
+                                <br>Languages: Norwegian(mother tongue), english
+                                <br>Domicile: Trondheim, Sør-Trøndelag
+                            </span>
+                        </p>
+                    </article>
+                    <article class="contentBox">
+                        <h1>
+                            <span class="norwegian">
+                                Arbeidserfaring
+                            </span>
+                            <span class="english">
+                                Work experience
+                            </span>
+                        </h1>
+                        <p class="CVP" onmouseover="showDiv('7')" onmouseout="hideDiv('7')">
+                            <span class="norwegian">
+                            Lærer/kursholder (Webutvikling)
+                            <br>Sommerskolen Trondheim
+                            <br>juni 2016 - juli 2016
+                            </span>
+                            <span class="english">
+                            Teacher/trainer (Web development)
+                            <br>Trondheim Summer School
+                            <br>June 2016 - July 2016
+                            </span>
+                        </p>
+                        <div id="7" class="hoverInfo">
+                            <span class="norwegian">
+                            Jobben gikk ut på å undervise på et kurs i grunnleggende webutvikling hvor deltagerne fikk lære HTML, CSS og Javascript. 
+                            Ved endt kurs hadde deltagerne laget og presentert en egen nettside ved hjelp av det de hadde lært.
+                            </span>
+                            <span class="english">
+                            The job was to teach a course in basic web development where participants learned HTML, CSS and JavaScript.
+                            Upon completing the course the participants created and presented its own website using what they had learned .
+                            </span>
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('8')" onmouseout="hideDiv('8')">
+                            <span class="norwegian">
+                                Konsulent: Oppsett av nettside
+                                <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                                <br>juni 2014
+                            </span>
+                            <span class="english">
+                                Consultant: Setup website
+                                <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura congregation</a>
+                                <br>June 2014
+                            </span>
+                        </p>
+                        <div id="8" class="hoverInfo">
+                            <span class="norwegian">
+                            Jobben gikk ut på å sette opp nettsiden til menigheten og fylle den med innhold. 
+                            Verktøy jeg brukte: Ferdig nettsideløsning, Labora portal, levert av Agrando. 
+                            </span>
+                            <span class="english">
+                            The job was to set up the website for the church and fill it with content.
+                            Tools I used : Website solution callled Labora portal, provided by Agrando .
+                            </span>
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('9')" onmouseout="hideDiv('9')">
+                            <span class="norwegian">
+                            Kirketjenervikar
+                            <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                            <br>august 2011 - juni 2013
+                            </span>
+                            <span class="english">
+                            Verger, substitute
+                            <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura congregation</a>
+                            <br>August 2011 - June 2013
+                            </span>
+                        </p>
+                        <div id="9" class="hoverInfo">
+                            <span class="norwegian">
+                            Arbeidsoppgaver: Styring av tekst og bilde på projektor samt, styre lyd, låse- og ryddeansvarlig
+                            </span>
+                            <span class="english">
+                            Responsebilities: Management of text and images projected on the screen, controlling sound, locking and tidying.
+                            </span> 
+                        </div>
+                    </article>
+                    <article class="contentBox">
+                        <h1>
+                            <span class="norwegian">
+                                Utdanning
+                            </span>
+                            <span class="english">
+                                Education
+                            </span>
+                        </h1>
+                        <p class="CVP" onmouseover="showDiv('1')" onmouseout="hideDiv(1)">
+                            <span class="norwegian">
+                                Datateknologi (5-årig master)
+                                <br><a href="http://ntnu.no" target="_blank">Norges teknisk-naturvitenskapelige universitet (NTNU)</a>
+                                <br>august 2013-d.d
+                            </span>
+                            <span class="english">
+                                Computer Science (5-year master)
+                                <br><a href="http://ntnu.no" target="_blank">Norwegian University of Science and Technology (NTNU)</a>
+                                <br>August 2013-present
+                            </span>
+                            
+                        </p>
+                        <div id="1" class="hoverInfo">
+                            <span class="norwegian">
+                                Retning: Programvaresystemer
+                                <br>Hovedprofil: Programvareutvikling
+                                <br>Gjennomsnittskarakter: B
+                            </span>
+                            <span class="english">
+                                Field of study: Software
+                                <br>Specialization: Software Engineering
+                                <br>Average grade: B
+                            </span>
+                            
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('2')" onmouseout="hideDiv('2')">
+                            <span class="norwegian">
+                                Studiespesialisering, realfag
+                                <br><a href="http://sandnes.vgs.no/" target="_blank">Sandnes VGS</a>
+                                <br>august 2010 - juni 2013
+                            </span>
+                            <span class="english">
+                                General Studies, science subjects
+                                <br><a href="http://sandnes.vgs.no/" target="_blank">Sandnes Upper secondary school</a>
+                                <br>August 2010 - June 2013
+                            </span>
+                        </p>
+                        <div id="2" class="hoverInfo">
+                            <span class="norwegian">
+                                Programfag: Matematikk 1T, R1 og R2, Fysikk 1 og 2, Informajsonsteknologi 1 og 2, Kjemi 1
+                                <br>Gjennomsnittskarakter: 5,5
+                            </span>
+                            <span class="english">
+                                Chosen subjects: Math 1T, R1 og R2, Physics 1 og 2, Information technology 1 og 2, Chemistry 1
+                                <br>Average grade: 5,5
+                            </span>
+                            
+                        </div>
+                    </article>
+                    <article class="contentBox">
+                        <h1>
+                            <span class="norwegian">
+                                Verv og frivillig arbeid
+                            </span>
+                            <span class="english">
+                                Solstices and voluntary work
+                            </span>
+                        </h1>
+                        <p class="CVP" onmouseover="showDiv('3')" onmouseout="hideDiv('3')">
+                            <span class="norwegian">
+                                Informasjonsansvarlig
+                                <br><a href="http://trondheim.kodeklubben.no/" target="_blank">Kodeklubben Trondheim</a>
+                                </br>mai 2016 -d.d
+                            </span>
+                            <span class="english">
+                                Information officer
+                                <br><a href="http://trondheim.kodeklubben.no/" target="_blank">Kodeklubben Trondheim (Codeclub Trondheim)</a>
+                                </br>May 2016 -present
+                            </span>
+                            
+                        </p>
+                        <div id="3" class="hoverInfo">
+                            <span class="norwegian">
+                                Sitter i styret i Kodeklubben Trondheim, som er tilknyttet Lær Kidsa Koding(LKK).
+                                <br>Hovedansvarsområder: Skape aktivitet på sosiale medier, svare på henvendelser og tilgjengeliggjøre informasjon.
+                            </span>
+                            <span class="english">
+                                I am a member of the board of the Code Club Trondheim.
+                                Main responsibility areas : Creating activity on social media , answer inquiries and make information available.
+                            </span>
+                            
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('4')" onmouseout="hideDiv('4')">
+                            <span class="norwegian">
+                                Veileder/kursholder
+                                <br><a href="http://trondheim.kodeklubben.no/" target="_blank">Kodeklubben Trondheim</a>
+                                <br>februar 2015 - d.d
+                            </span>
+                            <span class="english">
+                                Supervisor/teacher
+                                <br><a href="http://trondheim.kodeklubben.no/" target="_blank">Kodeklubben Trondheim (Codeclub Trondheim)</a>
+                                <br>februar 2015 - present
+                            </span>
+                            
+                        </p>
+                        <div id="4" class="hoverInfo">
+                            <span class="norwegian">
+                                Går ut på å holde kurs for barn i programmering. (Python)
+                            </span>
+                            
+                            <span class="english">
+                                Kodeklubben Trondheim organizes courses for children's programming. There are courses in Scratch, Python and Java. 
+                            </span>
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('5')" onmouseout="hideDiv('5')">
+                            <span class="norwegian">
+                                Konfirmantleder
+                                <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                                <br>juni 2011 - juni 2014, juni 2016
+                            </span>
+                            <span class="english">
+                                Confirmand-leader
+                                <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura congregation</a>
+                                <br>June 2011 - June 2014, June 2016
+                            </span>
+                            
+                        </p>
+                        <div id="5" class="hoverInfo">
+                            <span class="norwegian">
+                                Som konfirmantleder er jeg med på sommerleir og er med og planlegger og gjennomfører opplegg for konfirmantene.
+                                Som konfirmantleder er man også et forbilde for konfirmantene og har medansvar for at alle konfirmantene har det greit.
+                            </span>
+                            <span class="english">
+                                As confirmand-leader, I am part of the team which arranges a summer camp and is actively involved in planning and arranging the camp activities.
+                                As a confirmand-leader I am also a role model for the camp participants.
+
+                            </span>
+                            
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('6')" onmouseout="hideDiv('6')">
+                            <span class="norwegian">
+                                Styremedlem/teknisk ansvarlig
+                                <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                                <br>september 2009 - juni 2013
+                            </span>
+                            <span class="english">
+                                Board member/technical responsible
+                                <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura congregation</a>
+                                <br>September 2009 - June 2013
+                            </span>
+                            
+                        </p>
+                        <div id="6" class="hoverInfo">
+                            <span class="norwegian">
+                                Som styremedlem var jeg med og planla arrangementer for ungomsklubben "Loff1". 
+                                Som teknisk ansvarlig hadde jeg ansvar for å styre lyd, lys og projektor under 
+                                arrangementen vi hadde planlagt.  
+                            </span>
+                            <span class="english">
+                                As a board member, I was taking part of the planning of events for youth club "Loff1".
+                                As technical responsible, I was responsible for controlling the sound, lighting and 
+                                projection during the events we had.
+                            </span>
+                            
+                        </div>
+                    </article>
+                    <article class="contentBox">
+                        <h1>
+                            <span class="norwegian">
+                                Annen kompetanse
+                            </span>
+                            <span class="english">
+                                Other competance
+                            </span>
+                        </h1>
+                        <p class="CVText">
+                            <span class="norwegian">
+                                <b>IT:</b>
+                                <br>-Programmeringsspråk: Python, Java 
+                                <br>-Webutvikling: HTML, CSS, Javascript og PHP
+                                <br>-Annet: MySQL, JavaFX
+                            </span>
+                        </p>
+                        <p class="CVText">
+                            <span class="norwegian">
+                                <b>Sertifikater:</b>
+                                <br>-Førerkort klasse B
+                                <br>-Båtførerprøven
+                            </span> 
+                        </p>
+                        <p class="CVText">
+                            <span class="english">
+                                <b>IT:</b>
+                                <br>-Programming languages: Python, Java 
+                                <br>-Web development: HTML, CSS, Javascript og PHP
+                                <br>-Other: MySQL, JavaFX
+                            </span>
+                        </p>
+                        <p class="CVText">
+                            <span class="english">
+                                <b>Sertificates:</b>
+                                <br>-Driver license (class B)
+                                <br>-Boating license
+                            </span>  
+                        </p> 
+                        
+                    </article>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section id="ProsjekterContent">
+            <div class="scrollLeft" onclick="leftRightScroll(true)"></div>
+            <div class="scrollRight" onclick="leftRightScroll(false)"></div>
+            <div class="message">
+                <span class="norwegian">
+                    Sjekk gjerne ut <a href="https://github.com/sindreor" target="_blank">github</a> for flere ting jeg har bidratt til.
+                </span>
+                <span class="english">
+                    More suff can be found on <a href="https://github.com/sindreor" target="_blank">github</a>.
+                </span>
+            </div>
+            <div class="scrollbox" onscroll="updateScroll()">
+                <div class="eternalBox">
+                    <article class="contentBox2">
+                        <div class="imageBox">
+                            <img alt="Picture showing loff1.no" src="resources/loff11.jpg"/>
+                            <img alt="Picture showing loff1.no" src="resources/loff12.jpg"/>
+                            <img alt="Picture showing loff1.no" src="resources/loff13.jpg"/>
+                        </div>
+                        <h1>Loff1.no</h1>
+                        <div class="norwegian">
+                            <ul class="projectText">
+                                <li><b>Hva:</b> Nettside for kristen ungdomsklubb</li>
+                                <li><b>Teknologier:</b> HTML, CSS, Javascript og PHP</li>
+                                <li><b>Type prosjekt:</b> Oppdrag gjort på frivillig basis</li>
+                                <li><b>Detaljert beskrivelse:</b> Nettsiden er for det meste bygget ved hjelp av ren HTML og CSS, 
+                                og gjør i tillegg bruk av Javascript for noe funksjonalitet. PHP brukes for å lese innholdet på
+                                siden fra lagrede tekstfiler, slik at innholdet kan redigeres uten å direkte skrive html, men bare
+                                redigere tekstdokumentene. I tillegg har siden funksjonalitet som automatisk oppdaterer en arrangementliste.
+                                Siden har ikke blitt vedlikeholdt etter at jeg laget den, og bærer preg av dette.</li>
+                                <li><b>Hvor fornøyd er jeg:</b> 5/10</li>
+                                <li><b>Finn ut mer om dette prosjektet:</b>
+                                    <br><a href="http://www.loff1.no" target="_blank">loff1.no</a>
+                                    <br><a href="https://github.com/sindreor/sharedProjects/tree/master/loff1.no" target="_blank">Kode på Github</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="english">
+                            <ul class="projectText">
+                                <li><b>What:</b> Webpage for christian youth club</li>
+                                <li><b>Technologies:</b> HTML, CSS, Javascript og PHP</li>
+                                <li><b>Type of project:</b> Assignments done on a voluntary basis</li>
+                                <li><b>Details:</b> The website is mostly built using pure HTML and CSS,
+                                and additionally allows the use of JavaScript for some functionality. PHP is used to read the contents of the
+                                page from saved text files so that the content can be edited without having to directly write HTML, but only
+                                edit text documents. The page also has functionality for automatically updating a list events.
+                                Since the page has not been maintained after I made it, there are currently some areas that could use some improvement.
+                                </li>
+                                <li><b>How pleased am I with it:</b> 5/10</li>
+                                <li><b>Find out more about this project:</b>
+                                    <br><a href="http://www.loff1.no" target="_blank">loff1.no</a>
+                                    <br><a href="https://github.com/sindreor/sharedProjects/tree/master/loff1.no" target="_blank">Code on Github</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="contentBox2">
+                        <div class="imageBox">
+                            <img alt="Picture showing Ubongo game" src="resources/ubongo1.png"/>
+                            <img alt="Picture showing Ubongo game" src="resources/ubongo2.png"/>
+                            <img alt="Picture showing Ubongo game" src="resources/ubongo3.png"/>
+                        </div>
+                        <h1>Ubongo</h1>
+                        <div class="norwegian">
+                            <ul class="projectText">
+                                <li><b>Hva:</b> Multiplayer spill på Android</li>
+                                <li><b>Teknologier:</b> Java, Android</li>
+                                <li><b>Type prosjekt:</b> Gruppeprosjekt i faget TDT4240 Programvarearkitektur ved NTNU</li>
+                                <li><b>Detaljert beskrivelse:</b> Det er viktig å poengtere at dette var et gruppeprosjekt hvor 
+                                flere enn bare meg har bidratt til koden. Den viktigste delen av prosjektet var ikke koden i seg 
+                                selv, men det å anvende kjente arkitektur "patterns" og lage god dokumentasjon. Spillet er som følge
+                                av dette fokuset å regne som en prototype som ikke er grundig testet. Mine bidrag var primært å 
+                                lage diagrammer i arkitekturdokumentasjonen, implementasjon av lobby- og menysystemet og koble 
+                                sammen de ulike delene for å få dem til å virke sammen. Prosjektet som en helhet fikk karakteren A.
+                                </li>
+                                <li><b>Hvor fornøyd er jeg:</b> 6/10</li>   
+                                <li><b>Finn ut mer om dette prosjektet:</b>
+                                   <br><a href="https://github.com/sindreor/UbongoClient" target="_blank">Kode for klient + dokumentasjon</a>
+                                   <br><a href="https://github.com/sindreor/UbongoServer" target="_blank">Kode for tilhørende server</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="english">
+                            <ul class="projectText">
+                                <li><b>What:</b> Multiplayer game on Android</li>
+                                <li><b>Technologies:</b> Java, Android</li>
+                                <li><b>Type of project:</b> Group project in the subject TDT4240 Software Architecture at NTNU</li>
+                                <li><b>Details:</b> It is important to emphasize that this was a group project where
+                                not just me have contributed to the code. The main focus for the project was not to create a good game but to employ 
+                                well known architecture patterns and create good documentation. Due to this focus, the game is not perfect at must be
+                                regarded as a prototype that has not been thoroughly tested. My contribution was primarily to
+                                create diagrams in the architecture documentation, implementation of lobby and menu system and connect
+                                together the various parts to get them to work together. The project as a whole got the grade A.
+                                </li>
+                                <li><b>How pleased am I with it:</b> 6/10</li>   
+                                <li><b>Find out more about this project:</b>
+                                   <br><a href="https://github.com/sindreor/UbongoClient" target="_blank">Code for client + documentation</a>
+                                   <br><a href="https://github.com/sindreor/UbongoServer" target="_blank">Code for associated server</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="contentBox2">
+                    </article>
+                    <article class="contentBox2">
+                    </article>
+                    <article class="contentBox2">
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+    </body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>sindreor.no</title>
+        <link rel="stylesheet" href="screen.css" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>        
+        <script>
+            var timer = null;
+            var t = 0;
+            var h = 0;
+            var width = 0;
+            var start = 0;
+            var section = "";
+
+            var CVcolor = "rgba(255, 0, 0, 0.30)";
+            var prosjektColor = "rgba(0, 0, 255, 0.30)";
+            var menucolor = "rgba(0, 0, 0, 0.30)";
+
+            var ids = ["CVContent", "ProsjekterContent"];
+            var openStatus = [false, false];
+            var horScrollDistance = [0.35, 0.60];
+            var scrolldistance = 0;
+
+            //Visual effect in menu
+            function menudrop(startwidth, startpos, id) {
+                if (id == section) {
+                    reset();
+                    section = "";
+
+                }
+                else {
+
+                    reset();
+                    width = startwidth;
+                    start = startpos;
+                    section = id;
+                    clearInterval(timer);
+                    timer = setInterval(rollVertical, 1);
+                    document.getElementById(section).style.visibility = "visible";
+                    document.getElementById(section).style.width = startwidth + "vw";
+                    document.getElementById(section).style.marginLeft = startpos + "vw";
+                    if (section == 'CVContent') {
+                        document.getElementById('CV').style.backgroundColor = CVcolor;
+                        openStatus[0] = true;
+                        scrolldistance = horScrollDistance[0]; //Sets how much the scroller should scroll
+                    }
+                    else if (section == 'ProsjekterContent') {
+                        document.getElementById('prosjekt').style.backgroundColor = prosjektColor;
+                        openStatus[1] = true;
+                        scrolldistance = horScrollDistance[1];//Sets how much the scroller should scroll
+                    }
+                }
+                //Control fading of front page
+                var show = true;
+                for (i = 0; i < openStatus.length; i++) {
+                    if (openStatus[i] == true) {
+                        show = false;
+                    }
+                }
+                if (show) {
+                    showFront(true);
+                }
+                else {
+                    showFront(false);
+                }
+
+            }
+
+            //Timed function for vertical movement
+            function rollVertical() {
+                t += 1;
+                h = 19 * Math.log(t);
+                if (h >= 90) {
+                    h = 90;
+                    clearInterval(timer);
+                    t = 0;
+                    timer = setInterval(rollHorizontal, 1);
+                }
+                document.getElementById(section).style.height = h + "vh";
+
+            }
+            //Timed function for horizontal movement
+            function rollHorizontal() {
+                t += 1;
+                start = start - (0.5 * Math.log(t));
+                width = width + (0.5 * Math.log(t));
+                if (start < 0 && width > 100) {
+                    start = 0;
+                    width = 100;
+                    clearInterval(timer);
+                }
+                else if (width >= 100) {
+                    width = 100;
+
+                }
+                else if (start <= 0) {
+                    start = 0;
+                }
+
+                document.getElementById(section).style.width = width + "vw";
+                document.getElementById(section).style.marginLeft = start + "vw";
+            }
+            //Resets the menu
+            function reset() {
+                scrollpos = 0;
+                $(".scrollbox").scrollLeft(scrollpos); //This to avoid scrolling in CV to affect scrolling in projects and vice versa
+                for (i = 0; i < ids.length; i++) {
+                    document.getElementById(ids[i]).style.height = "0vh";
+                    document.getElementById(ids[i]).style.visibility = "hidden";
+                    openStatus[i] = false;
+                }
+                document.getElementById('CV').style.backgroundColor = menucolor;
+                document.getElementById('prosjekt').style.backgroundColor = menucolor;
+                h = 0;
+                t = 0;
+
+                //Control fading of front page
+                var show = true;
+                for (i = 0; i < openStatus.length; i++) {
+                    if (openStatus[i] == true) {
+                        show = false;
+                    }
+                }
+                if (show) {
+                    showFront(true);
+                }
+                else {
+                    showFront(false);
+                }
+            }
+            //Hover-functionality for menu buttons
+            function hover(id) {
+                if (id == 'CV') {
+                    document.getElementById('CV').style.backgroundColor = CVcolor;
+                }
+                else if (id == 'prosjekt') {
+                    document.getElementById('prosjekt').style.backgroundColor = prosjektColor;
+                }
+            }
+            function hoverleave(id) {
+                if (id == 'CV' && section != 'CVContent') {
+                    document.getElementById('CV').style.backgroundColor = menucolor;
+                }
+                else if (id == 'prosjekt' && section != 'ProsjekterContent') {
+                    document.getElementById('prosjekt').style.backgroundColor = menucolor;
+                }
+            }
+
+            //Scroll-functionality for content
+            var scrollpos = 0;
+            var scrolltimer = null;
+            var winwidth = 0;
+            var time = 0;
+            var endpos = 0;
+
+            //Function which is called when scroll-buttons are clicked
+            function leftRightScroll(direction) {
+                winwidth = window.innerWidth;
+                clearInterval(scrolltimer);
+                if (direction) {//Scroll left
+                    endpos = scrollpos - (winwidth * scrolldistance);
+                    scrolltimer = setInterval(timedScrollLeft, 1);
+                }
+
+                else {//Scroll right
+                    endpos = scrollpos + (winwidth * scrolldistance);
+                    scrolltimer = setInterval(timedScrollRight, 1);
+                }
+
+            }
+
+            //Function which scrolls based on time
+            function timedScrollRight() {
+                time += 1;
+                scrollpos = scrollpos + (Math.log(time));
+                if (scrollpos > endpos) {
+                    time = 0;
+                    scrollpos = endpos;
+                    $(".scrollbox").scrollLeft(scrollpos);
+                    clearInterval(scrolltimer);
+
+                }
+                $(".scrollbox").scrollLeft(scrollpos); //jQuery
+            }
+
+            //Function which scrolls based on time
+            function timedScrollLeft() {
+                time += 1;
+                scrollpos = scrollpos - (Math.log(time));
+                if (scrollpos < endpos) {
+                    time = 0;
+                    scrollpos = endpos;
+                    $(".scrollbox").scrollLeft(scrollpos);
+                    clearInterval(scrolltimer);
+
+                }
+                $(".scrollbox").scrollLeft(scrollpos); //jQuery
+            }
+            function updateScroll() {
+                scrollpos = $(".scrollbox").scrollLeft();
+            }
+
+
+            //Front page fading
+            var fadeTime = 0;
+            var fadetimer = null;
+            var fadeval = 1.0;
+            function showFront(show) {
+                if (show) {
+                    document.getElementById("front").opacity = "0.0";
+                    clearInterval(fadetimer);
+                    fadetimer = setInterval(fadeUpFront, 1);
+                }
+                else {
+                    document.getElementById("front").opacity = "1.0";
+                    clearInterval(fadetimer);
+                    fadetimer = setInterval(fadeDownFront, 1);
+                }
+
+            }
+            function fadeUpFront() {
+                fadeTime += 1;
+                fadeval += 0.00003 * fadeTime;
+                if (fadeval >= 1) {
+                    fadeTime = 0;
+                    fadeval = 1;
+                    document.getElementById("front").opacity = fadeval + "";
+                    clearInterval(fadetimer);
+
+                }
+                document.getElementById("front").style.opacity = fadeval + "";
+
+            }
+            function fadeDownFront() {
+                fadeTime += 1;
+                fadeval -= 0.00003 * fadeTime;
+                if (fadeval <= 0) {
+                    fadetime = 0;
+                    fadeval = 0;
+                    document.getElementById("front").opacity = fadeval + "";
+                    clearInterval(fadetimer);
+                }
+                document.getElementById("front").style.opacity = fadeval + "";
+            }
+            //Hover-for-more-info-functionality
+            function showDiv(id) {
+                var element = document.getElementById(id);
+                element.style.visibility = "visible";
+                element.style.height = "10vh";
+            }
+            function hideDiv(id) {
+                var element = document.getElementById(id);
+                element.style.visibility = "hidden";
+                element.style.height = "0px";
+            }
+
+            function changeLanguage(){
+                
+            } 
+        </script>
+    
+    </head>
+
+    <body>
+        <header>
+        <img alt="missing_picture" onclick="reset()" class="logo" src="resources/sindreor.png"/>
+        <img alt="missing_picture" class="language" src="resources/norwegian.png"/>
+        <img alt="missing_picture" class="language" src="resources/english.png"/>
+        </header>
+
+        <nav>
+            <div class="menuObject" id="CV" onmouseover="hover('CV')" onmouseout="hoverleave('CV')" onclick="menudrop(30,40,'CVContent')"><p>CV</p></div>
+            <div class="menuObject" id="prosjekt" onmouseover="hover('prosjekt')" onmouseout="hoverleave('prosjekt')" onclick="menudrop(30,70,'ProsjekterContent')"><p>Prosjekter</p></div>
+        </nav>
+        <div id="front">
+            <div class="blackLargeL">
+                    <h1>Welcome</h1>
+                        <p>Du har nå klikket deg inn på min lille side. Her kan du lese om meg og hva jeg driver med. I tillegg finner du CVen min her og kontaktinformasjon.<br><br>Denne siden er laget ved bruk av HTML, CSS og Javascript, og ble laget for å prøve ut nye ideer, få enda mer erfaring innenfor webdesign og rett og slett bare for å ha det litt gøy! :D</p>
+                    <img src="resources/drage.png" alt="logo" width="30%" height="40%"/>
+                </div>
+                <div class="blackMediumR">
+                    <img src="resources/fjes.png" alt="fjes" width="90%" height="90%"/>
+                </div>
+            </div>
+        </div>
+        <section id="CVContent">
+            <div class="scrollLeft" onclick="leftRightScroll(true)"></div>
+            <div class="scrollRight" onclick="leftRightScroll(false)"></div>
+            <div class="message">Beveg musepekeren over/touch punktene i CVen for mer info:</div>
+            <div class="scrollbox" onscroll="updateScroll()">
+                <div class="eternalBox">
+                    <article class="contentBox">
+                        <h1>Personalia</h1>
+                        <p class="CVText">
+                           Navn: Sindre O. Rasmussen
+                           <br>Kjønn: Mann
+                           <br>Yrkesstatus: Student
+                           <br>Språk: Norsk(morsmål), engelsk
+                           <br>Bosted: Trondheim, Sør-Trøndelag
+                           <br>Hjemsted: Sandnes, Rogaland
+
+                        </p>
+                    </article>
+                    <article class="contentBox">
+                        <h1>Arbeidserfaring</h1>
+                        <p class="CVP" onmouseover="showDiv('7')" onmouseout="hideDiv('7')">
+                            Lærer/kursholder (Webutvikling)
+                            <br>Sommerskolen Trondheim
+                            <br>juni 2016 - juli 2016
+                        </p>
+                        <div id="7" class="hoverInfo">
+                            Jobben gikk ut på å undervise på et kurs i grunnleggende webutvikling hvor deltagerne fikk lære HTML, CSS og Javascript. 
+                            Ved endt kurs hadde deltagerne laget og presentert en egen nettside ved hjelp av det de hadde lært.
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('8')" onmouseout="hideDiv('8')">
+                            Konsulent: Oppsett av nettside
+                            <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                            <br>juni 2014
+                        </p>
+                        <div id="8" class="hoverInfo">
+                            Jobben gikk ut på å sette opp nettsiden til menigheten og fylle den med innhold. 
+                            Verktøy jeg brukte: Ferdig nettsideløsning, Labora portal, levert av Agrando. 
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('9')" onmouseout="hideDiv('9')">
+                            Kirketjenervikar
+                            <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                            <br>august 2011 - juni 2013
+                        </p>
+                        <div id="9" class="hoverInfo">
+                            Arbeidsoppgaver: Styring av tekst og bilde på projektor samt, styre lyd, låse- og ryddeansvarlig 
+                        </div>
+                    </article>
+                    <article class="contentBox">
+                        <h1>Utdanning</h1>
+                        <p class="CVP" onmouseover="showDiv('1')" onmouseout="hideDiv(1)">
+                            Datateknologi (5-årig master)
+                            <br><a href="http://ntnu.no" target="_blank">Norges teknisk-naturvitenskapelige universitet (NTNU)</a>
+                            <br>august 2013-d.d
+                        </p>
+                        <div id="1" class="hoverInfo">
+                            Retning: Programvaresystemer
+                            <br>Hovedprofil: Programvareutvikling
+                            <br>Gjennomsnittskarakter: B
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('2')" onmouseout="hideDiv('2')">
+                            Studiespesialisering, realfag
+                            <br><a href="http://sandnes.vgs.no/" target="_blank">Sandnes VGS</a>
+                            <br>august 2010 - juni 2013
+                        </p>
+                        <div id="2" class="hoverInfo">
+                            Programfag: Matematikk 1T, R1 og R2, Fysikk 1 og 2, Informajsonsteknologi 1 og 2, Kjemi 1
+                            <br>Gjennomsnittskarakter: 5,5
+                        </div>
+                    </article>
+                    <article class="contentBox">
+                        <h1>Verv og frivillig arbeid</h1>
+                        <p class="CVP" onmouseover="showDiv('3')" onmouseout="hideDiv('3')">
+                            Informasjonsansvarlig
+                            <br><a href="http://trondheim.kodeklubben.no/" target="_blank">Kodeklubben Trondheim</a>
+                            </br>mai 2016 -d.d
+                        </p>
+                        <div id="3" class="hoverInfo">
+                            Sitter i styret i Kodeklubben Trondheim, som er tilknyttet Lær Kidsa Koding(LKK).
+                            <br>Hovedansvarsområder: Skape aktivitet på sosiale medier, svare på henvendelser og tilgjengeliggjøre informasjon.
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('4')" onmouseout="hideDiv('4')">
+                            Veileder/kursholder
+                            <br><a href="http://trondheim.kodeklubben.no/" target="_blank">Kodeklubben Trondheim</a>
+                            <br>februar 2015 - d.d
+                        </p>
+                        <div id="4" class="hoverInfo">
+                            Går ut på å holde kurs for barn i programmering. (Python)
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('5')" onmouseout="hideDiv('5')">
+                            Konfirmantleder
+                            <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                            <br>juni 2011 - juni 2014, juni 2016
+                        </p>
+                        <div id="5" class="hoverInfo">
+                            Som konfirmantleder er jeg med på sommerleir og er med og planlegger og gjennomfører opplegg for konfirmantene.
+                            Som konfirmantleder er man også et forbilde for konfirmantene og har medansvar for at alle konfirmantene har det greit.
+                        </div>
+                        <p class="CVP" onmouseover="showDiv('6')" onmouseout="hideDiv('6')">
+                            Styremedlem/teknisk ansvarlig
+                            <br><a href="http://lura.dnn2.labora-portal.no/" target="_blank">Lura menighet</a>
+                            <br>september 2009 - juni 2013
+                        </p>
+                        <div id="6" class="hoverInfo">
+                            Som styremedlem var jeg med og planla arrangementer for ungeomsklubben "Loff1". 
+                            Som teknisk ansvarlig hadde jeg ansvar for å styre lyd, lys og projektor under arrangementen vi hadde planlagt.
+                        </div>
+                    </article>
+                    <article class="contentBox">
+                        <h1>Annen kompetanse</h1>
+                        <p class="CVText"><b>IT:</b>
+                        <br>-Programmeringsspråk: Python, Java 
+                        <br>-Webutvikling: HTML, CSS, Javascript og PHP
+                        <br>-Annet: MySQL, JavaFX</p>
+                        <p class="CVText"><b>Sertifikater:</b>
+                        <br>-Førerkort klasse B
+                        <br>-Båtførerprøven</p>
+                    </article>
+                </div>
+            </div>
+            
+        </section>
+        
+        <section id="ProsjekterContent">
+            <div class="scrollLeft" onclick="leftRightScroll(true)"></div>
+            <div class="scrollRight" onclick="leftRightScroll(false)"></div>
+            <div class="message">Message</div>
+            <div class="scrollbox" onscroll="updateScroll()">
+                <div class="eternalBox">
+                    <article class="contentBox2">
+                        <div class="imageBox">
+                            <img alt="bilde ikke tilgjengelig" src="resources/loff11.jpg"/>
+                            <img alt="bilde ikke tilgjengelig" src="resources/loff12.jpg"/>
+                            <img alt="bilde ikke tilgjengelig" src="resources/loff13.jpg"/>
+                        </div>
+                        <h1>Loff1.no</h1>
+                        <ul class="projectText">
+                            <li><b>Hva:</b> Nettside for kristen ungdomsklubb</li>
+                            <li><b>Teknologier:</b> HTML, CSS, Javascript og PHP</li>
+                            <li><b>Type prosjekt:</b> Oppdrag gjort på frivillig basis</li>
+                            <li><b>Detaljert beskrivelse:</b> Nettsiden er for det meste bygget ved hjelp av ren HTML og CSS, 
+                            og gjør i tillegg bruk av Javascript for noe funksjonalitet. PHP brukes for å lese innholdet på
+                            siden fra lagrede tekstfiler, slik at innholdet kan redigeres uten å direkte skrive html, men bare
+                            redigere tekstdokumentene. I tillegg har siden funksjonalitet som automatisk oppdaterer en arrangementliste.
+                            Siden har ikke blitt vedlikeholdt etter at jeg laget den, og bærer preg av dette.</li>
+                            <li><b>Hvor fornøyd er jeg:</b> 5/10</li>
+                            <li><b>Finn ut mer om dette prosjektet:</b>
+                                <br><a href="http://www.loff1.no" target="_blank">loff1.no</a>
+                                <br><a href="https://github.com/sindreor/sharedProjects/tree/master/loff1.no" target="_blank">Kode på Github</a>
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="contentBox2">
+                        <div class="imageBox">
+                            <img alt="bilde ikke tilgjengelig" src="resources/ubongo1.png"/>
+                            <img alt="bilde ikke tilgjengelig" src="resources/ubongo2.png"/>
+                            <img alt="bilde ikke tilgjengelig" src="resources/ubongo3.png"/>
+                        </div>
+                        <h1>Ubongo</h1>
+                        <ul class="projectText">
+                            <li><b>Hva:</b> Multiplayer spill på Android</li>
+                            <li><b>Teknologier:</b> Java, Android</li>
+                            <li><b>Type prosjekt:</b> Gruppeprosjekt i faget TDT4240 Programvarearkitektur ved NTNU</li>
+                            <li><b>Detaljert beskrivelse:</b> Det er viktig å poengtere at dette var et gruppeprosjekt hvor 
+                            flere enn bare meg har bidratt til koden. Den viktigste delen av prosjektet var ikke koden i seg 
+                            selv, men det å anvende kjente arkitektur "patterns" og lage god dokumentasjon. Spillet er som følge
+                            av dette fokuset å regne som en prototype som ikke er grundig testet. Mine bidrag var primært å 
+                            lage diagrammer i arkitekturdokumentasjonen, implementasjon av lobby- og menysystemet og koble 
+                            sammen de ulike delene for å få dem til å virke sammen. Prosjektet som en helhet fikk karakteren A.
+                            </li>
+                            <li><b>Hvor fornøyd er jeg:</b> 6/10</li>   
+                            <li><b>Finn ut mer om dette prosjektet:</b>
+                               <br><a href="https://github.com/sindreor/UbongoClient" target="_blank">Kode for klient + dokumentasjon</a>
+                               <br><a href="https://github.com/sindreor/UbongoServer" target="_blank">Kode for tilhørende server</a>
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="contentBox2">
+                    </article>
+                    <article class="contentBox2">
+                    </article>
+                    <article class="contentBox2">
+                    </article>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

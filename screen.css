@@ -1,0 +1,351 @@
+html{
+  background: url('resources/b1.jpg') no-repeat 50% 50% fixed; 
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  
+}
+body {
+    margin: 0px;
+    overflow: hidden;
+    font-family: Rockwell;
+    color: white;
+}
+img.bg{
+    display: none;
+}
+a {
+    color: Wheat;
+}
+header{
+    width: 39vw;
+    height: 9vh;
+    background-color: rgba(0, 0, 0, 0.30);
+    float: left;
+    /*background-image: url('resources/sindreor.png');
+    background-repeat: no-repeat;*/
+    padding-left: 1vw;
+    padding-top: 1vh;
+    overflow: hidden;
+    
+    
+}
+
+nav{
+    width: 60vw;
+    height: 10vh;
+    float: left;
+    
+}
+
+.menuObject{
+  height: inherit;
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.30);
+  float: left;
+  font-size: 3vh; 
+  text-align: center;
+  
+}
+
+.menuObject:hover{
+    color: #edd9d9;
+    cursor: pointer; 
+}
+#front{
+    float: left;
+    height: 90vh;
+    width: 105vw;
+    margin-top: 10vh;
+    overflow: scroll;
+    position: absolute;
+    
+}
+
+#CVContent{
+    margin-top: 10vh;
+    background-color: rgba(255, 0, 0, 0.30);
+    height: 0vh;
+    visibility: hidden;
+    position: absolute;
+    overflow: hidden;
+    
+}
+#ProsjekterContent{
+    margin-top: 10vh;
+    background-color: rgba(0, 0, 255, 0.30);
+    width: 100vw;
+    height: 0vh;
+    visibility: hidden;
+    position: absolute;
+    overflow: hidden;
+}
+
+.language{
+    margin-left: 1vw;
+    margin-top: 2vw;
+    height: 3vh;
+    
+}
+.language:hover{
+    cursor: pointer;
+}
+.english{
+    display: none;
+}
+.logo{
+    margin-right: 2vw;
+    height: inherit;
+}
+.logo:hover{
+    cursor: pointer;
+}
+.contentBox{
+    background-color: rgba(0, 0, 0, 0.30);
+    height: auto;
+    width: 30vw;
+    margin-left: 5vw;
+    float: left; 
+    max-height: 80vh;
+
+}
+
+.contentBox h1{
+    font-size: 4vh;
+    padding-left: 1vw;
+}
+
+
+.contentBox2{
+    background-color: rgba(0, 0, 0, 0.30);
+    height: auto;
+    width: 55vw;
+    margin-left: 5vw;
+    float: left; 
+    max-height: 80vh;
+
+}
+
+.contentBox2 h1{
+    font-size: 4vh;
+    padding-left: 1vw;
+}
+
+.imageBox{/*Midlertidige verdier*/
+   width: 25vw; 
+   float: right;
+   height: inherit;
+   max-height: 80vh;
+   overflow: hidden;
+}
+.imageBox img{
+    width: inherit;
+}
+
+.scrollbox{
+    width: 105vw;
+    height: 90vh;
+    margin-top: 4vh;
+    overflow-x: scroll;
+    overflow-y: hidden;
+        
+}
+
+.eternalBox{
+    height: inherit;
+    width: 4000px;
+}
+
+.scrollLeft{
+    float: left;
+    height: 30vh;
+    margin-top: 30vh;
+    width: 3vw;
+    position: fixed;
+    background-color: rgba(200,200,200,0.30);
+    background: url('resources/arrowL.png');
+    background-size: 3vw 30vh;
+}
+
+.scrollRight{
+    margin-left: 97vw;
+    height: 30vh;
+    margin-top: 30vh;
+    width: 3vw;
+    position: fixed;
+    background-color: rgba(200,200,200,0.30);
+    background: url('resources/arrowR.png');
+    background-size: 3vw 30vh;
+    
+}
+.scrollRight:hover{
+    background: url('resources/arrowRh.png');
+    background-size: 3vw 30vh;
+    cursor: pointer;
+}
+.scrollLeft:hover{
+    background: url('resources/arrowLh.png');
+    background-size: 3vw 30vh;
+    cursor: pointer;
+}
+
+.blackSmallL{
+   background:  url('resources/black.png');
+   background-size: cover;
+   width: 12vw;
+   height: 12vw;
+   float: left;
+   color: white;
+   font-size: xx-large;
+   text-align: center;
+}
+.blackSmallR{
+   background:  url('resources/black.png');
+   background-size: cover;
+   width: 12vw;
+   height: 12vw;
+   float: right;
+   color: white;
+   font-size: xx-large;
+   text-align: center;
+}
+
+.blackMediumL{
+   background:  url('resources/black.png');
+   background-size: cover;
+   width: 26vw;
+   height: 26vw;
+   float: left;
+   color: white;
+}
+.blackMediumR{
+   background:  url('resources/black.png');
+   background-size: cover;
+   width: 26vw;
+   height: 26vw;
+   float: right;
+   color: white;
+   margin-right: 10vw;
+   margin-top: 10vh;
+}
+
+.blackLargeL{
+   background:  url('resources/black.png');
+   background-size: cover;
+   width: 30vw;
+   height: 30vw;
+   float: left;
+   color: white;
+   padding-top: 100px;
+   padding-left: 50px;
+   padding-right: 50px;
+   font-size: 1.2vw;
+   text-align: center;
+   margin-left: 10vw;
+}
+.blackLargeR{
+   background:  url('resources/black.png');
+   background-size: cover;
+   width: 35vw;
+   height: 35vw;
+   float: right;
+   color: white;
+   padding-top: 100px;
+   padding-left: 50px;
+   padding-right: 50px;
+   font-size: x-large;
+   text-align: center;
+   
+}
+.hoverInfo{
+    visibility: hidden;
+    background-color: rgba(255, 0, 0, 0.30);
+    width: 28vw;
+    height: 0px;
+    overflow: hidden;
+    position: static;
+    margin-top: 0px;
+    padding-left: 2vw;
+    padding-top: 1vh;
+    font-size: 2vh;
+    
+}
+.CVP{
+    margin-bottom: 0px; 
+    font-size: 3vh;
+    padding-left: 2vw;
+}
+.CVText{
+   font-size: 3vh;
+   padding-left: 2vw; 
+}
+.CVP:hover{
+    background-color: rgba(255, 0, 0, 0.30);
+}
+.message{
+    position: fixed;
+}
+.projectText{
+    font-size: 2vh;
+}
+.projectText li{
+    margin-bottom: 1vh;
+}
+.projectText h1{
+    margin-bottom: 0px;
+}
+#fjes{
+    width: 90%;
+    height: 90%;
+}
+.contactFacebook{
+    width: 4vw;
+    height: 4vw;
+    float: left;
+    margin-left: 1vw;
+    background-image: url(resources/facebook_g.png);
+    background-size: cover;
+}
+.contactFacebook:hover{
+    background-image: url(resources/facebook_c.png);
+}
+.contactLinkedIn{
+    width: 4vw;
+    height: 4vw;
+    float: left;
+    margin-left: 1vw;
+    background-image: url(resources/linkedin_g.png);
+    background-size: cover;
+}
+.contactLinkedIn:hover{
+    background-image: url(resources/linkedin_c.png);
+}
+.contactMail{
+    width: 4vw;
+    height: 4vw;
+    float: left;
+    margin-left: 1vw;
+    background-image: url(resources/mail_g.png);
+    background-size: cover;
+}
+.contactMail:hover{
+    background-image: url(resources/mail_c.png);
+}
+.contactGithub{
+    width: 4vw;
+    height: 4vw;
+    float: left;
+    margin-left: 1vw;
+    background-image: url(resources/github_g.png);
+    background-size: cover;
+}
+.contactGithub:hover{
+    background-image: url(resources/github_c.png);
+}
+#contactbox{
+    width: 20vw;
+    height: 4vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+

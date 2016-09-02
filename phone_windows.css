@@ -1,0 +1,318 @@
+html{
+    
+  
+}
+body {
+    margin: 0px;
+    font-family: Rockwell;
+    color: white;
+    overflow: hidden;
+    position: fixed;
+}
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+
+a {
+    color: Wheat;
+}
+header{
+    position: relative;
+    width: 99vw;
+    height: 15vh;
+    background-color: rgba(0, 0, 0, 0.30);
+    float: left;
+    /*background-image: url('resources/sindreor.png');
+    background-repeat: no-repeat;*/
+    padding-left: 1vw;
+    padding-top: 1vh;
+    overflow: hidden;
+    text-align: center;
+}
+
+nav{
+    position: relative;
+    width: 100vw;
+    height: 10vh;
+    float: left;
+    border-top: 0.1vh solid black;
+}
+
+.menuObject{
+  height: inherit;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.40);
+  float: left;
+  font-size: 3vh; 
+  text-align: center;
+  border-bottom: 0.1vh solid black;
+  
+}
+
+.menuObject:hover{
+    color: #edd9d9;
+    cursor: pointer; 
+}
+
+#front{
+    position: relative;
+    float: left;
+    height: 64vh;
+    width: 100vw;
+    margin-top: 10vh;
+    overflow: scroll;
+    
+}
+
+#CVContent{
+    position: absolute;
+    margin-top: 10vh;
+    background-color: rgba(255, 0, 0, 0.30);
+    height: 64vh;
+    width: 100vw;
+    float: left;
+    visibility: hidden;
+    
+}
+#ProsjekterContent{
+    position: absolute;
+    margin-top: 10vh;
+    background-color: rgba(0, 0, 255, 0.30);
+    height: 64vh;
+    width: 100vw;
+    float: left;
+    visibility: hidden;
+}
+
+.language{
+    margin-left: 1vw;
+    margin-top: 2vw;
+    height: 5vh;
+    
+}
+.language:hover{
+    cursor: pointer;
+}
+.english{
+    display: none;
+}
+.logo{
+    margin-left: auto;
+    margin-right: auto;
+    height: inherit;
+}
+.logo:hover{
+    cursor: pointer;
+}
+.contentBox{
+    background-color: rgba(0, 0, 0, 0.30);
+    height: auto;
+    width: 90vw;
+    margin-left:5vw;
+    float: left; 
+    margin-bottom: 2vh;
+}
+
+.contentBox h1{
+    font-size: 4vh;
+    padding-left: 1vw;
+}
+
+
+.contentBox2{
+    background-color: rgba(0, 0, 0, 0.30);
+    height: auto;
+    width: 90vw;
+    margin-left: 5vw;
+    float: left;
+    margin-bottom: 2vh;
+
+}
+
+.contentBox2 h1{
+    font-size: 4vh;
+    padding-left: 1vw;
+}
+
+.imageBox{/*Midlertidige verdier*/
+   width: inherit; 
+   float: right;
+   height: inherit;
+   overflow: hidden;
+}
+.imageBox img{
+    width: 29.5vw;
+}
+
+.scrollbox{
+    width: 100vw;
+    margin-top: 4vh;
+    height: 95vh;
+    overflow: scroll;       
+}
+
+.eternalBox{
+    width: 100vw;
+}
+
+.scrollLeft{
+    display: none;
+}
+
+.scrollRight{
+    display: none;
+    
+}
+
+.blackSmallL{
+   text-align: center;
+   background-color: rgba(0, 0, 0, 0.30);
+   margin: 0px;
+}
+.blackSmallR{
+  text-align: center; 
+  margin: 0px;
+  float: left;
+  width: 100%;
+}
+
+.blackMediumL{
+   text-align: center;
+   margin: 0px;
+   float: left;
+   width: 100%;
+}
+.blackMediumR{
+   text-align: center;
+   margin: 0px;
+   float: left;
+   width: 100%;
+}
+
+.blackLargeL{
+   text-align: center;
+   float: left;
+   width: 80vw;
+   background-color: rgba(0, 0, 0, 0.30);
+   border-radius: 5vw;
+   font-size: 3vh;
+   margin-left:10vw;
+   margin-top: 4vh;
+}
+.blackLargeR{
+   text-align: center;
+   margin: 0px;
+   float: left;
+   width: 100%;
+   
+}
+.hoverInfo{
+    visibility: hidden;
+    background-color: rgba(255, 0, 0, 0.30);
+    width: 88vw;
+    height: 0px;
+    overflow: hidden;
+    position: static;
+    margin-top: 0px;
+    padding-left: 2vw;
+    padding-top: 1vh;
+    font-size: 2vh;
+    
+}
+.CVP{
+    margin-bottom: 0px; 
+    font-size: 3vh;
+    padding-left: 2vw;
+}
+.CVText{
+   font-size: 3vh;
+   padding-left: 2vw; 
+}
+
+.message{
+    display: none;
+}
+.projectText{
+    font-size: 2vh;
+}
+.projectText li{
+    margin-bottom: 1vh;
+}
+.projectText h1{
+    margin-bottom: 0px;
+}
+#drage{
+    display: none;
+}
+#fjes{
+    height: 50vh;
+}
+.contactFacebook{
+    width: 11vh;
+    height: 11vh;
+    float: left;
+    margin-left: 1vh;
+    background-image: url(resources/facebook_g.png);
+    background-size: cover;
+}
+.contactFacebook:hover{
+    background-image: url(resources/facebook_c.png);
+}
+.contactLinkedIn{
+    width: 11vh;
+    height: 11vh;
+    float: left;
+    margin-left: 1vh;
+    background-image: url(resources/linkedin_g.png);
+    background-size: cover;
+}
+.contactLinkedIn:hover{
+    background-image: url(resources/linkedin_c.png);
+}
+.contactMail{
+    width: 11vh;
+    height: 11vh;
+    float: left;
+    margin-left: 1vh;
+    background-image: url(resources/mail_g.png);
+    background-size: cover;
+}
+.contactMail:hover{
+    background-image: url(resources/mail_c.png);
+}
+.contactGithub{
+    width: 11vh;
+    height: 11vh;
+    float: left;
+    margin-left: 1vh;
+    background-image: url(resources/github_g.png);
+    background-size: cover;
+}
+.contactGithub:hover{
+    background-image: url(resources/github_c.png);
+}
+#contactbox{
+    width: 48vh;
+    height: 11vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
