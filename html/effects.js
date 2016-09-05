@@ -85,7 +85,7 @@ function menudrop(startwidth, startpos, id) {
         start = startpos;
         section = id;
         clearInterval(timer);
-        timer = setInterval(rollVertical, 1);
+        timer = setInterval(rollVertical, 0.00000001);
         document.getElementById(section).style.visibility = "visible";
         document.getElementById(section).style.width = startwidth + "vw";
         document.getElementById(section).style.marginLeft = startpos + "vw";
