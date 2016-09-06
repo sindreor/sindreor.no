@@ -115,12 +115,13 @@ var elapsed = 0;
 function rollVertical() {
     var now = new Date().getTime();
     elapsed += (now - lastFrame);
-    h = 14.4 * Math.log(elapsed);
-    if(elapsed>=496){
+    h = 0.0005 * Math.pow(elapsed, 2);
+    if(elapsed>=424){
         h = 90;
         clearInterval(timer);
         elapsed = 0;
         timer = setInterval(rollHorizontal, 1);
+
     }
      document.getElementById(section).style.height = h + "vh";
      lastFrame = now;
@@ -138,7 +139,27 @@ function rollVertical() {
 }
 //Timed function for horizontal movement
 function rollHorizontal() {
-    t += 1;
+    var now = new Date().getTime();
+    elapsed += (now - lastFrame);
+    start = start - (0.4*Math.log(elapsed));
+    width = width + (0.4*Math.log(elapsed));
+    if (elapsed>=116618) {
+        start = 0;
+        width = 100;
+        clearInterval(timer);
+        elapsed = 0;
+    }
+    if (width >= 100) {
+        width = 100;
+
+    }
+    if (start <= 0) {
+        start = 0;
+    }
+    lastFrame = now;
+    document.getElementById(section).style.width = width + "vw";
+    document.getElementById(section).style.marginLeft = start + "vw";
+    /*t += 1;
     start = start - (0.5 * Math.log(t));
     width = width + (0.5 * Math.log(t));
     if (start < 0 && width > 100) {
@@ -156,6 +177,7 @@ function rollHorizontal() {
 
     document.getElementById(section).style.width = width + "vw";
     document.getElementById(section).style.marginLeft = start + "vw";
+    */
 }
 //Resets the menu
 function reset() {
@@ -170,7 +192,8 @@ function reset() {
         document.getElementById('CV').style.backgroundColor = menucolor;
         document.getElementById('prosjekt').style.backgroundColor = menucolor;
         h = 0;
-        t = 0;
+        //t = 0;
+        elapsed = 0;
 
         //Control fading of front page
         frontPageCheck();
@@ -230,13 +253,15 @@ var endpos = 0;
 function leftRightScroll(direction) {
     winwidth = window.innerWidth;
     clearInterval(scrolltimer);
+    //lastFrame = new Date().getTime();
+    //elapsed = 0;
     if (direction) {//Scroll left
-        endpos = scrollpos - (winwidth * scrolldistance);
+        endpos = scrollpos - (winwidth * scrolldistance);              
         scrolltimer = setInterval(timedScrollLeft, 1);
     }
 
     else {//Scroll right
-        endpos = scrollpos + (winwidth * scrolldistance);
+        endpos = scrollpos + (winwidth * scrolldistance);     
         scrolltimer = setInterval(timedScrollRight, 1);
     }
 
@@ -244,6 +269,19 @@ function leftRightScroll(direction) {
 
 //Function which scrolls based on time
 function timedScrollRight() {
+    /*var now = new Date().getTime();
+    elapsed += (now - lastFrame);
+    scrollpos = scrollpos + (Math.log(elapsed));
+    if (scrollpos >= endpos) {
+        elapsed = 0;
+        scrollpos = endpos;
+        $(".scrollbox").scrollLeft(scrollpos);
+        clearInterval(scrolltimer);
+        
+    }
+    $(".scrollbox").scrollLeft(scrollpos); //jQuery
+    lastFrame=now;
+    */
     time += 1;
     scrollpos = scrollpos + (Math.log(time));
     if (scrollpos > endpos) {
@@ -254,6 +292,7 @@ function timedScrollRight() {
 
     }
     $(".scrollbox").scrollLeft(scrollpos); //jQuery
+    
 }
 
 //Function which scrolls based on time
