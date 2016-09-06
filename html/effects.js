@@ -20,8 +20,8 @@ var width = 0;
 var start = 0;
 var horScrollDistance = [0.35, 0.60];
 var scrolldistance = 0;
-var startTime = 0.0;
-var elapsedTime = 0.0;
+//var startTime = 0.0;
+//var elapsedTime = 0.0;
 
 //Phone variables
 var scrollPos = 0;
@@ -88,7 +88,7 @@ function menudrop(startwidth, startpos, id) {
         start = startpos;
         section = id;
         clearInterval(timer);
-        startTime = Date.now();//Merk
+        //startTime = Date.now();
         timer = setInterval(rollVertical, 1);
         
 
@@ -113,6 +113,7 @@ function menudrop(startwidth, startpos, id) {
 
 //Timed function for vertical movement
 function rollVertical() {
+    /*
     elapsedTime = Date.now() - startTime;
     h = 2.5 * Math.sqrt(elapsedTime);
     if(elapsedTime>=1296){
@@ -123,7 +124,7 @@ function rollVertical() {
         timer = setInterval(rollHorizontal, 1);
     }
      document.getElementById(section).style.height = h + "vh";
-    /*
+    */
     t += 1;
     h = 19 * Math.log(t);
     if (h >= 90) {
@@ -133,7 +134,7 @@ function rollVertical() {
         timer = setInterval(rollHorizontal, 1);
     }
     document.getElementById(section).style.height = h + "vh";
-    */
+    
 }
 //Timed function for horizontal movement
 function rollHorizontal() {
