@@ -157,8 +157,8 @@ function rollHorizontal() {
         start = 0;
     }
     lastFrame = now;
-    document.getElementById(section).style.width = width + "%";
-    document.getElementById(section).style.marginLeft = start + "%";
+    document.getElementById(section).style.width = width + "vw";
+    document.getElementById(section).style.marginLeft = start + "vw";
     /*t += 1;
     start = start - (0.5 * Math.log(t));
     width = width + (0.5 * Math.log(t));
