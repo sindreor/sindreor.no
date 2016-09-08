@@ -262,7 +262,7 @@ function leftRightScroll(direction) {
 
     else {//Scroll right
         endpos = scrollpos + (winwidth * scrolldistance);     
-        scrolltimer = setInterval(timedScrollRight, 1);
+        scrolltimer = setInterval(timedScrollRight, 20);
     }
 
 }
@@ -282,8 +282,8 @@ function timedScrollRight() {
     $(".scrollbox").scrollLeft(scrollpos); //jQuery
     lastFrame=now;
     */
-    time += 1;
-    scrollpos = scrollpos + (Math.log(time));
+    time += 20;
+    scrollpos = scrollpos + 8*Math.log(time));
     if (scrollpos > endpos) {
         time = 0;
         scrollpos = endpos;
