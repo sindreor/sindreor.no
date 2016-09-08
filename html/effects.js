@@ -257,7 +257,7 @@ function leftRightScroll(direction) {
     //elapsed = 0;
     if (direction) {//Scroll left
         endpos = scrollpos - (winwidth * scrolldistance);              
-        scrolltimer = setInterval(timedScrollLeft, 1);
+        scrolltimer = setInterval(timedScrollLeft, 20);
     }
 
     else {//Scroll right
@@ -297,8 +297,8 @@ function timedScrollRight() {
 
 //Function which scrolls based on time
 function timedScrollLeft() {
-    time += 1;
-    scrollpos = scrollpos - (Math.log(time));
+    time += 20;
+    scrollpos = scrollpos - (8*Math.log(time));
     if (scrollpos < endpos) {
         time = 0;
         scrollpos = endpos;
