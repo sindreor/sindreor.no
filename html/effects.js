@@ -283,7 +283,7 @@ function timedScrollRight() {
     lastFrame=now;
     */
     time += 20;
-    scrollpos = scrollpos + 8*Math.log(time));
+    scrollpos = scrollpos + (8*Math.log(time));
     if (scrollpos > endpos) {
         time = 0;
         scrollpos = endpos;
