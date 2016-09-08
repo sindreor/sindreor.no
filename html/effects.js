@@ -359,12 +359,12 @@ function frontPageCheck(){
         if (show) {
             document.getElementById("front").opacity = "0.0";
             clearInterval(fadetimer);
-            fadetimer = setInterval(fadeUpFront, 1);
+            fadetimer = setInterval(fadeUpFront, 20);
         }
         else {
             document.getElementById("front").opacity = "1.0";
             clearInterval(fadetimer);
-            fadetimer = setInterval(fadeDownFront, 1);
+            fadetimer = setInterval(fadeDownFront, 20);
         }
     }
     else{
@@ -377,7 +377,7 @@ function frontPageCheck(){
     }
 }
 function fadeUpFront() {
-    fadeTime += 1;
+    fadeTime += 20;
     fadeval += 0.00003 * fadeTime;
     if (fadeval >= 1) {
         fadeTime = 0;
@@ -390,7 +390,7 @@ function fadeUpFront() {
 
 }
 function fadeDownFront() {
-    fadeTime += 1;
+    fadeTime += 20;
     fadeval -= 0.00003 * fadeTime;
     if (fadeval <= 0) {
         fadetime = 0;
