@@ -20,7 +20,7 @@ var width = 0;
 var start = 0;
 var horScrollDistance = [0.35, 0.60];
 var scrolldistance = 0;
-var lastFrame = 0;
+//var lastFrame = 0;
 
 //Phone variables
 var scrollPos = 0;
@@ -87,8 +87,8 @@ function menudrop(startwidth, startpos, id) {
         start = startpos;
         section = id;
         clearInterval(timer);
-        lastFrame = new Date().getTime();
-        timer = setInterval(rollVertical, 1);
+        //lastFrame = new Date().getTime();
+        timer = setInterval(rollVertical, 20);
         
 
         document.getElementById(section).style.visibility = "visible";
@@ -111,8 +111,9 @@ function menudrop(startwidth, startpos, id) {
 }
 
 //Timed function for vertical movement
-var elapsed = 0;
+//var elapsed = 0;
 function rollVertical() {
+    /*
     var now = new Date().getTime();
     elapsed += (now - lastFrame);
     h = 0.0005 * Math.pow(elapsed, 2);
@@ -125,20 +126,21 @@ function rollVertical() {
     }
      document.getElementById(section).style.height = h + "vh";
      lastFrame = now;
-    /*
-    t += 1;
-    h = 19 * Math.log(t);
+    */
+    t += 20;
+    h =  0.0005 * Math.pow(t, 2);
     if (h >= 90) {
         h = 90;
         clearInterval(timer);
         t = 0;
-        timer = setInterval(rollHorizontal, 1);
+        timer = setInterval(rollHorizontal, 20);
     }
     document.getElementById(section).style.height = h + "vh";
-    */
+    
 }
 //Timed function for horizontal movement
 function rollHorizontal() {
+    /*
     var now = new Date().getTime();
     elapsed += (now - lastFrame);
     start = start - (0.4*Math.log(elapsed));
@@ -159,9 +161,10 @@ function rollHorizontal() {
     lastFrame = now;
     document.getElementById(section).style.width = width + "vw";
     document.getElementById(section).style.marginLeft = start + "vw";
-    /*t += 1;
-    start = start - (0.5 * Math.log(t));
-    width = width + (0.5 * Math.log(t));
+    */
+    t += 20;
+    start = start - (1.5 * Math.log(t));
+    width = width + (1.5 * Math.log(t));
     if (start < 0 && width > 100) {
         start = 0;
         width = 100;
@@ -177,7 +180,7 @@ function rollHorizontal() {
 
     document.getElementById(section).style.width = width + "vw";
     document.getElementById(section).style.marginLeft = start + "vw";
-    */
+    
 }
 //Resets the menu
 function reset() {
@@ -192,8 +195,8 @@ function reset() {
         document.getElementById('CV').style.backgroundColor = menucolor;
         document.getElementById('prosjekt').style.backgroundColor = menucolor;
         h = 0;
-        //t = 0;
-        elapsed = 0;
+        t = 0;
+        //elapsed = 0;
 
         //Control fading of front page
         frontPageCheck();
